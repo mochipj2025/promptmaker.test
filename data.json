@@ -1,0 +1,73 @@
+{
+  "characters": [
+    {
+      "id": "char_01",
+      "name": "美しい魔法使い",
+      "description": "金髪の長い髪を持つ魔法使い",
+      "features": {
+        "hair_color": "golden",
+        "hair_length": "long",
+        "eye_color": "blue",
+        "build": "slender",
+        "accessories": ["魔法杖", "crystalペンダント"]
+      },
+      "costumes": [
+        {
+          "type": "robe",
+          "color": "deep blue",
+          "style": "ornate",
+          "details": ["embroidered stars", "glowing silver runes"]
+        },
+        {
+          "type": "dress",
+          "color": "white",
+          "style": "flowing",
+          "details": ["lace trim", "transparent sleeves"]
+        }
+      ]
+    },
+    {
+      "id": "char_02",
+      "name": "勇敢な騎士",
+      "description": "赤い鎧を着た勇敢な騎士",
+      "features": {
+        "hair_color": "brown",
+        "hair_length": "short",
+        "eye_color": "green",
+        "build": "muscular",
+        "accessories": ["sword", "shield"]
+      },
+      "costumes": [
+        {
+          "type": "armor",
+          "color": "red",
+          "style": "plate mail",
+          "details": ["gold accents", "lion crest"]
+        },
+        {
+          "type": "cloak",
+          "color": "black",
+          "style": "cape",
+          "details": ["fur collar"]
+        }
+      ]
+    }
+  ],
+  "styles": [
+    {
+      "id": "style_01",
+      "name": "写実的",
+      "keywords": ["photorealistic", "high detail", "8k"]
+    },
+    {
+      "id": "style_02",
+      "name": "アニメ風",
+      "keywords": ["anime", "manga", "bright colors", "large eyes"]
+    },
+    {
+      "id": "style_03",
+      "name": "サイバーパンク",
+      "keywords": ["cyberpunk", "neon lights", "futuristic", "rainy street"]
+    }
+  ]
+}

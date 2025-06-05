@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Prompt Maker</title>
+    <!-- Tailwind CSS -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide"></script>
+    <style>
+        /* カスタムCSS: ネオン効果 */
+        .text-neon-blue {
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 30px #00ffff;
+        }
+        .text-neon-purple {
+            text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+        }
+        .text-neon-green {
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 30px #00ff00;
+        }
+        .shadow-neon-blue {
+            box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 30px #00ffff;
+        }
+        .shadow-neon-purple {
+            box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+        }
+        .shadow-neon-green {
+            box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 30px #00ff00;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans p-6">
+
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center mb-8 text-neon-blue">SD Prompt Maker</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- プロンプト構成エリア -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg shadow-neon-purple">
+                <h2 class="text-2xl font-semibold mb-4 text-neon-purple">Prompt Builder</h2>
+
+                <div id="prompt-controls" class="space-y-4">
+                    <!-- モデル・クオリティ -->
+                    <div>
+                        <label for="model-quality" class="block text-sm font-medium text-gray-300">Model/Quality</label>
+                        <input type="text" id="model-quality" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5" value="SmoothNoob_Quality, semi-realistic">
+                    </div>
+
+                    <!-- スタイル -->
+                    <div>
+                        <label for="style" class="block text-sm font-medium text-gray-300">Style</label>
+                        <select id="style" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- キャラクター・属性 -->
+                    <div>
+                        <label for="character" class="block text-sm font-medium text-gray-300">Character/Attributes</label>
+                        <select id="character" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- 衣装・装飾 -->
+                    <div>
+                        <label for="costume" class="block text-sm font-medium text-gray-300">Costume/Accessories</label>
+                        <select id="costume" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- ヘア・フェイス -->
+                    <div>
+                        <label for="hair-face" class="block text-sm font-medium text-gray-300">Hair/Face</label>
+                        <select id="hair-face" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- ポーズ・動き・アクション -->
+                    <div>
+                        <label for="pose-action" class="block text-sm font-medium text-gray-300">Pose/Action</label>
+                        <select id="pose-action" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- ライティング・質感 -->
+                    <div>
+                        <label for="lighting-texture" class="block text-sm font-medium text-gray-300">Lighting/Texture</label>
+                        <select id="lighting-texture" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- アングル・構図 -->
+                    <div>
+                        <label for="angle-composition" class="block text-sm font-medium text-gray-300">Angle/Composition</label>
+                        <select id="angle-composition" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- 背景 -->
+                    <div>
+                        <label for="background" class="block text-sm font-medium text-gray-300">Background</label>
+                        <select id="background" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 block w-full p-2.5"></select>
+                    </div>
+
+                    <!-- ネガティブプロンプト -->
+                    <div class="mt-6">
+                        <label for="negative-prompt" class="block text-sm font-medium text-gray-300">Negative Prompt</label>
+                        <textarea id="negative-prompt" rows="3" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-red-400 focus:border-red-400 block w-full p-2.5"></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- プロンプト表示エリア -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg shadow-neon-green">
+                <h2 class="text-2xl font-semibold mb-4 text-neon-green">Generated Prompt</h2>
+
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-300">Positive Prompt:</h3>
+                    <pre id="positive-prompt-output" class="bg-gray-700 border border-gray-600 text-gray-100 p-3 rounded-lg whitespace-pre-wrap break-words mt-1"></pre>
+                    <button id="copy-positive-btn" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                        <i data-lucide="copy" class="w-4 h-4 mr-2"></i> Copy Positive Prompt
+                    </button>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-gray-300">Negative Prompt:</h3>
+                    <pre id="negative-prompt-output" class="bg-gray-700 border border-gray-600 text-gray-100 p-3 rounded-lg whitespace-pre-wrap break-words mt-1"></pre>
+                    <button id="copy-negative-btn" class="mt-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                        <i data-lucide="copy" class="w-4 h-4 mr-2"></i> Copy Negative Prompt
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        lucide.create();
+    </script>
+</body>
+</html>
